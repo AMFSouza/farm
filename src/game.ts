@@ -53,7 +53,7 @@ export default class Farm extends Phaser.Scene
             sprite.input.customHitArea = true;
 
             // create animal animal animation
-            this.anims.create({
+            sprite.anims.create({
                 key: 'animate',
                 frames: this.anims.generateFrameNumbers(animal.key, {start: 0, end: 2}),
                 frameRate: 10,
@@ -110,8 +110,8 @@ export default class Farm extends Phaser.Scene
     }
 
     onAnimateAnimal(sprite: Phaser.GameObjects.Sprite, event: Event) {
-        this.currentAnimal = this.getAnimal(AnimalSelector.animalSelected);
-        this.currentAnimal.anims.play('animate');
+        const newAnimal = this.getAnimal(AnimalSelector.animalSelected);
+        newAnimal.anims.play('animate');
     }
 
     getAnimal(index: number): Phaser.GameObjects.Sprite {
